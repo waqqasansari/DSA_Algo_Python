@@ -1,12 +1,33 @@
-def two_sum(array, sum):
-    print(sum)
-    for i in array:
-        print('-->', i)
-        # diff_dict = {}
-        # print('---',array[i])
-        diff = array[i] - sum
-        print('diff', diff)
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        com_dict = {}
+        for i, num in enumerate(nums):
+            complement = target - nums[i]
+            print(num ,complement)
+            
+            if complement in com_dict:
+                # print('--', com_dict[num], com_dict[complement])
+                return [com_dict[complement], i]
+                # return (complement, num)
+            com_dict[num] = i
+        print(com_dict)
 
-nums = [3,4,2,5,3,2]
-k = 8
-two_sum(nums, k)
+
+
+# Create an instance of the Solution class
+solution = Solution()
+
+# Define your list of numbers and the target
+nums = [3,2,4]
+target = 6
+
+# Call the twoSum method
+result = solution.twoSum(nums, target)
+
+# Print the result
+print(result)
