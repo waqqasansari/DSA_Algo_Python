@@ -4,21 +4,20 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        max = 0
+        max_profit = 0
         i, j = 0, 1
-        print(prices)
-        while(i < len(prices) or j < len(prices)):
-            print(j)
-            if prices[j] >= prices[i]:
-                if prices[j] - prices[i] > max:
-                    max = prices[j] - prices[i]
-                j += 1
-            else:
-                if prices[j] < prices[i]:
-                    i += 1
         
-        return max
-
+        while j < len(prices):
+            if prices[j] >= prices[i]:
+                profit = prices[j] - prices[i]
+                if profit > max_profit:
+                    max_profit = profit
+            else:
+                # Update buying price to current price if it's lower
+                i = j  # Move buying point to the current selling point
+            j += 1  # Always move to the next selling price
+        
+        return max_profit
 
 
 # Create an instance of the Solution class
